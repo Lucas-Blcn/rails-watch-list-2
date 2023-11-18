@@ -1,23 +1,29 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= asset_path("banner.jpg") %>');">
+<div class="banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= asset_path("banner.jpg") %>');">
   <div class="container">
       <h1>Your cinema at home <strong>when you want</strong>, <strong>whenever you want</strong> !🍿</h1>
       <p>Never ever forget your favorit movies.</p>
-      <%= link_to "Create a new list", lists_path, class:"btn btn-primary"%>
+      <%= link_to "Create a new list", "#my_input_new_list", class:"btn btn-light"%>
     </div>
 </div>
 
 
 <div class="container">
-  <h2>Your favorit lists</h2>
-  <div class="cards">
-    <% @lists.each do |list| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      <%= link_to list.name, list_path(list), class:"text-size text-decoration-none" %>
-    <%end%>
+  <h2 class = "py-3"style = "text-decoration: underline">Your favorite lists</h2>
+    <div class="cards py-2 mb-3">
+      <% @lists.each do |list| %>
+      <div class="card-category bg-light" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1535016120720-40c646be5580?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+      <%= link_to list.name, list_path(list), class:"text-size text-decoration-underline", style:"color:white" %>
     </div>
-
-  <%= simple_form_for @list do |f| %>
-    <%= f.input :name %>
-    <%= f.button :submit %>
-  <% end %>
+      <%end%>
+  </div>
 </div>
+
+<div class = "container mb-5">
+  <div class="">
+    <h2 style = "text-decoration: underline">Create a new list🎬</h2>
+    <%= simple_form_for @list do |f| %>
+      <%= f.input :name, input_html: { id: "my_input_new_list" } %>
+      <%= f.button :submit, class:"btn btn-primary rounded"%>
+    </div>
+    <% end %>
+  </div>

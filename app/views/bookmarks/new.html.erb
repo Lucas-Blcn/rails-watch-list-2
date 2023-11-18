@@ -1,7 +1,21 @@
-<h1>New Bookmark</h1>
+<div class="banner-bg mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= asset_path("new-movies.jpg") %>');">
+  <div class="container col-6 position-absolute top-50 start-50 translate-middle rounded shadow-lg p-4" style="background-color: rgba(220, 220, 220, 0.8);">
+    <p> <%= link_to(root_path, class: "btn btn-dark rounded") do %>
+      <i class="fas fa-backward" style="color: #ffffff;"></i> Go Back
+    <% end %>
+    </p>
 
-<%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :comment %>
-  <%= f.association :movie %>
-  <%= f.button :submit %>
-<% end %>
+    <div class="mb-3">
+      <h1 class="top-10">The movie you want to add</h1>
+    </div>
+    <div>
+      <%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.association :movie %>
+        <%= f.input :comment, placeholder: 'what did you think about this movie?'%>
+        <%= f.button :button, class: "btn btn-dark" do %>
+         <i class="fas fa-plus" style="color: #ffffff;"></i>
+        <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>
